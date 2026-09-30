@@ -1,0 +1,17 @@
+{
+  "name": "Cedar Haven",
+  "short_name": "Cedar Haven",
+  "description": "Boutique sanctuary in Kasarani, Nairobi with peaceful hospitality and modern comfort.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f8",
+  "theme_color": "#1a3c34",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Cedar Haven icon">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5ebd7"/>
+      <stop offset="100%" stop-color="#d7b56d"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#1a3c34"/>
+  <circle cx="64" cy="64" r="52" fill="url(#bg)" opacity="0.9"/>
+  <path d="M64 24c10 12 17 22 17 33 0 11-8 18-17 18s-17-7-17-18c0-11 7-21 17-33zm-18 54h36v10H46v-10zm6 16h24v10H52v-10z" fill="#1a3c34"/>
+  <path d="M64 30l12 18H52l12-18z" fill="#1a3c34" opacity="0.9"/>
+</svg>
