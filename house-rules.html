@@ -272,15 +272,17 @@
 
   <!-- Hero Title -->
   <section class="relative w-full pt-16 pb-12 sm:pt-20 sm:pb-16 flex items-center justify-center text-center">
-    <div class="relative z-10 max-w-4xl mx-auto px-6 flex flex-col items-center">
-      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a3c34]/90 border border-[#c5a059]/80 text-[#dfbe7e] text-xs uppercase tracking-[0.25em] mb-4 shadow-md">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></span>Peace of Mind
+    <div class="absolute inset-0"
+         style="background: linear-gradient(180deg, rgba(251, 249, 248, 0.88) 0%, rgba(251, 249, 248, 0.74) 55%, rgba(251, 249, 248, 0.58) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a3c34] border border-[#c5a059] text-[#dfbe7e] text-xs uppercase tracking-[0.25em] mb-5 shadow-md">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></span>Please Read On Arrival
       </span>
-      <h1 class="font-serif-title text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase font-normal bg-gradient-to-r from-[#1a3c34] via-[#775a19] to-[#1a3c34] bg-clip-text text-transparent">
-        House Guidelines
+      <h1 class="font-serif-title text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase font-semibold text-[#122c26]">
+        House Rules
       </h1>
-      <p class="font-serif-title text-lg sm:text-xl text-[#775a19] tracking-[0.16em] uppercase mt-3 italic">
-        Preserving tranquility &amp; comfort at Cedar Haven
+      <p class="font-serif-title text-lg sm:text-xl text-[#5c4512] tracking-[0.08em] mt-4">
+        Nine simple guidelines for a quiet, comfortable stay
       </p>
       <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059] to-transparent mx-auto mt-6"></div>
     </div>
@@ -292,14 +294,14 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
         <!-- Left Column: Title + Check-in/Check-out -->
-        <div class="lg:col-span-4 flex flex-col space-y-8 lg:sticky lg:top-28">
+        <div class="lg:col-span-4 flex flex-col space-y-6 bg-[#fbf9f8]/90 backdrop-blur-sm rounded-2xl border border-[#c5a059]/35 shadow-md p-6 sm:p-7 lg:sticky lg:top-28">
           <div class="space-y-4">
-            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c5a059]">Sanctuary Etiquette</span>
-            <h2 class="font-serif-title text-2xl sm:text-3xl text-[#1a3c34] leading-snug">
-              <span>Thoughtful </span><span class="text-[#c5a059] italic">Considerations</span>
+            <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#775a19]">Before You Settle In</span>
+            <h2 class="font-serif-title text-2xl sm:text-3xl text-[#122c26] leading-snug">
+              <span>A Few </span><span class="text-[#775a19] italic">Ground Rules</span>
             </h2>
-            <p class="text-sm text-[#1a3c34]/80 leading-relaxed font-normal">
-              Welcome to Cedar Haven. To ensure a peaceful, restorative, and harmonious stay for all our guests, we kindly invite you to observe these house guidelines during your time in Kasarani.
+            <p class="text-sm text-[#1a3c34]/85 leading-relaxed font-normal">
+              Welcome to Cedar Haven. These simple guidelines keep the house quiet, clean, and comfortable for you and for every guest who stays after you. Please read them once on arrival — they are easy to follow.
             </p>
           </div>
 
@@ -327,9 +329,9 @@
             </div>
           </div>
 
-          <div class="pt-2 text-xs text-[#1a3c34]/70 italic flex items-center gap-2">
-            <span class="material-symbols-outlined text-[#c5a059] text-sm">info</span>
-            <span>Early check-in or late check-out available upon prior request (subject to availability).</span>
+          <div class="pt-2 text-xs text-[#1a3c34]/80 leading-relaxed flex items-start gap-2">
+            <span class="material-symbols-outlined text-[#c5a059] text-sm mt-0.5 shrink-0">info</span>
+            <span>Need to arrive early or leave late? Let us know in advance and we will try to arrange it, depending on availability.</span>
           </div>
         </div>
 
@@ -354,8 +356,8 @@
 
             <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
               <div>
-                <span class="text-xs uppercase tracking-[0.2em] text-[#dfbe7e] font-semibold block mb-1">Our Commitment</span>
-                <h3 class="font-serif-title text-2xl sm:text-3xl text-white font-normal">Keeping Cedar Haven Beautiful</h3>
+                <span class="text-xs uppercase tracking-[0.2em] text-[#dfbe7e] font-semibold block mb-1">Why This Matters</span>
+                <h3 class="font-serif-title text-2xl sm:text-3xl text-white font-normal">Please Leave the House as You Found It</h3>
               </div>
               <div class="hidden sm:flex items-center gap-2 text-xs text-[#dfbe7e] tracking-wider uppercase font-medium bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
                 <span class="material-symbols-outlined text-sm">spa</span>
@@ -365,12 +367,12 @@
           </div>
 
           <!-- Rules Grid -->
-          <div>
-            <div class="mb-6 flex items-center justify-between pb-3 border-b border-[#1a3c34]/10">
-              <h4 class="font-serif-title text-xl sm:text-2xl text-[#1a3c34]">
-                <span>Guidelines for a </span><span class="text-[#c5a059] italic">Harmonious Stay</span>
+          <div class="bg-[#fbf9f8]/90 backdrop-blur-sm rounded-2xl border border-[#c5a059]/35 shadow-md p-6 sm:p-8">
+            <div class="mb-6 flex items-center justify-between pb-3 border-b border-[#1a3c34]/15">
+              <h4 class="font-serif-title text-xl sm:text-2xl text-[#122c26]">
+                <span>The </span><span class="text-[#775a19] italic">Nine House Rules</span>
               </h4>
-              <span class="text-xs uppercase tracking-widest text-[#775a19] font-semibold">9 Principles</span>
+              <span class="text-xs uppercase tracking-widest text-[#775a19] font-semibold shrink-0 pl-4">Easy to Follow</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -381,8 +383,8 @@
                   <span class="material-symbols-outlined text-[20px]">badge</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Registered Guests Only</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Only registered visitors are permitted on the property unless approved in advance.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Registered Guests Only</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Only guests whose names are on the booking may stay or enter the house. If you are expecting a visitor, tell us in advance so we can approve it.</p>
                 </div>
               </div>
 
@@ -392,8 +394,8 @@
                   <span class="material-symbols-outlined text-[20px]">smoke_free</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Smoke-Free Environment</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Strictly no smoking inside the apartment or on common areas.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">No Smoking</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">This is a smoke-free home. Please do not smoke inside the apartment, on the balcony, or in any shared outdoor area.</p>
                 </div>
               </div>
 
@@ -403,8 +405,8 @@
                   <span class="material-symbols-outlined text-[20px]">celebration</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">No Parties or Events</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Gatherings and loud parties are prohibited to maintain neighborhood serenity.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">No Parties or Events</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Please do not host parties, group gatherings, or events here. The house is for small, quiet stays so the neighbourhood stays peaceful.</p>
                 </div>
               </div>
 
@@ -414,8 +416,8 @@
                   <span class="material-symbols-outlined text-[20px]">bedtime</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Quiet Hours</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Kindly observe quiet relaxation hours from <span class="font-semibold text-[#1a3c34]">10:00 PM – 8:00 AM</span>.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Quiet Hours</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Please keep noise down between <span class="font-semibold text-[#1a3c34]">10:00 PM and 8:00 AM</span>. This includes music, television, and conversations.</p>
                 </div>
               </div>
 
@@ -425,8 +427,8 @@
                   <span class="material-symbols-outlined text-[20px]">chair</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Care of Furnishings</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Please treat the apartment and its bespoke furniture with gentle respect.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Care of the Furnishings</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Please treat the furniture, fabrics, and fittings as if they were your own. Keep food and drinks away from the beds and upholstery.</p>
                 </div>
               </div>
 
@@ -436,8 +438,8 @@
                   <span class="material-symbols-outlined text-[20px]">lightbulb</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Energy &amp; Safety</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Kindly switch off all lights and appliances whenever stepping out.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Switch Off Lights &amp; Appliances</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Turn off all lights, fans, air conditioning, and appliances when you leave the house or go to bed. It keeps our electricity costs down.</p>
                 </div>
               </div>
 
@@ -447,8 +449,8 @@
                   <span class="material-symbols-outlined text-[20px]">lock</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Secured Premise</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Always keep doors and entry gates locked whenever leaving the bungalow.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Lock Doors and Gates</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Lock the main door, the bedroom door, and all gates every time you leave — even for a short time out.</p>
                 </div>
               </div>
 
@@ -458,8 +460,8 @@
                   <span class="material-symbols-outlined text-[20px]">build</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Damage &amp; Repairs</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Report accidental damages or maintenance issues as soon as possible.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Report Damage or Breakages</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">If something breaks, stains, or stops working, please tell us as soon as possible so we can fix it straight away.</p>
                 </div>
               </div>
 
@@ -469,8 +471,8 @@
                   <span class="material-symbols-outlined text-[20px]">pets</span>
                 </div>
                 <div>
-                  <h5 class="text-sm font-semibold text-[#1a3c34]">Pet Policy</h5>
-                  <p class="text-xs text-[#1a3c34]/75 mt-0.5 leading-relaxed">Pets are not permitted on the property unless previously approved prior to arrival.</p>
+                  <h5 class="text-sm font-semibold text-[#122c26]">Pets</h5>
+                  <p class="text-xs text-[#1a3c34]/85 mt-0.5 leading-relaxed">Pets are not allowed on the property. If you need to bring one, please ask us first and get our approval before you arrive.</p>
                 </div>
               </div>
 
@@ -485,9 +487,9 @@
   <section class="w-full py-16 sm:py-20 bg-[#1a3c34] text-center text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-6">
-      <span class="text-xs uppercase tracking-[0.3em] text-[#dfbe7e] font-semibold mb-3 block italic">The Cedar Haven Creed</span>
-      <h2 class="font-serif-title text-3xl sm:text-4xl md:text-5xl tracking-[0.12em] uppercase font-normal italic bg-gradient-to-r from-[#dfbe7e] via-[#fff0c8] to-[#c5a059] bg-clip-text text-transparent">
-        Where Comfort Feels Like Home
+      <span class="text-xs uppercase tracking-[0.3em] text-[#dfbe7e] font-semibold mb-3 block italic">Thank You</span>
+      <h2 class="font-serif-title text-3xl sm:text-4xl md:text-5xl tracking-[0.04em] font-normal bg-gradient-to-r from-[#dfbe7e] via-[#fff0c8] to-[#c5a059] bg-clip-text text-transparent">
+        Treat Our Home Like Your Own
       </h2>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20reserve%20a%20stay"
