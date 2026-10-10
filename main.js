@@ -1,15 +1,6 @@
 /* ==========================================================================
    CEDAR HAVEN | SANCTUARY INTERACTION ENGINE (main.js)
    High-performance, vanilla JavaScript for seamless luxury guest experience.
-   Features:
-   - Dynamic background image loader
-   - Smooth scroll for in-page anchors
-   - Immersive gallery lightbox
-   - Interactive 5-star rating system
-   - Smooth mobile navigation drawer with auto-close
-   - Auto active-link highlighting
-   - Dynamic guest review submission
-   - Direct concierge desk / anonymous chat
    ========================================================================== */
 
 (function () {
@@ -38,7 +29,6 @@
 
   /* --------------------------------------------------------------------------
      1. DYNAMIC BACKGROUND IMAGE LOADER
-     Sets background images for elements with [data-bg] attributes.
      -------------------------------------------------------------------------- */
   function initBackgroundImages() {
     document.querySelectorAll('[data-bg]').forEach(function (el) {
@@ -50,7 +40,6 @@
 
   /* --------------------------------------------------------------------------
      2. FLUID SMOOTH SCROLLING FOR IN-PAGE ANCHORS
-     Accounts for sticky header height so targets aren't hidden.
      -------------------------------------------------------------------------- */
   function initSmoothScroll() {
     var header = document.querySelector('.site-header');
@@ -60,7 +49,6 @@
       anchor.addEventListener('click', function (event) {
         var targetId = this.getAttribute('href');
 
-        // Ignore placeholder links
         if (!targetId || targetId === '#' || targetId === '#!') return;
 
         var targetElement = document.querySelector(targetId);
@@ -78,7 +66,6 @@
           behavior: 'smooth'
         });
 
-        // Update URL without triggering jump
         if (history.pushState) {
           history.pushState(null, '', targetId);
         }
@@ -88,7 +75,6 @@
 
   /* --------------------------------------------------------------------------
      3. IMMERSIVE GALLERY LIGHTBOX MODAL
-     Full-screen view with keyboard & backdrop dismissal.
      -------------------------------------------------------------------------- */
   function initGalleryLightbox() {
     var lightbox = document.getElementById('lightbox');
@@ -142,7 +128,6 @@
 
   /* --------------------------------------------------------------------------
      4. INTERACTIVE 5-STAR RATING SYSTEM
-     Supports click selection, hover preview, and fill toggle.
      -------------------------------------------------------------------------- */
   function initReviewRatings() {
     var starsContainer = document.getElementById('rating-stars');
@@ -187,16 +172,11 @@
       updateStarsVisual(currentRating);
     });
 
-    // Initial paint
     updateStarsVisual(selectedRating);
   }
 
   /* --------------------------------------------------------------------------
      5. SMOOTH MOBILE NAVIGATION DRAWER
-     - Toggle with hamburger
-     - Auto-close on link tap
-     - Icon swap (menu ↔ close)
-     - Close on outside click, Escape, or resize to desktop
      -------------------------------------------------------------------------- */
   function initMobileMenu() {
     var toggleBtn = document.getElementById('mobile-menu-btn') ||
@@ -207,52 +187,63 @@
 
     if (!toggleBtn || !menu) return;
 
-    /* ----- Toggle open/close ----- */
-    toggleBtn.addEventListener('click', function () {
-      var isOpen = menu.classList.toggle('open');
+    // Ensure menu starts hidden if using the `.hidden` approach
+    if (!menu.classList.contains('open') && !menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+    }
 
-      // Also support the "hidden" class approach for older markup
-      if (menu.classList.contains('hidden') || menu.classList.contains('open')) {
-        // no-op — the toggle above already handled it
+    function isMenuOpen() {
+      return menu.classList.contains('open') || !menu.classList.contains('hidden');
+    }
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      menu.classList.add('open');
+      if (icon) icon.textContent = 'close';
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      menu.classList.add('hidden');
+      if (icon) icon.textContent = 'menu';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    toggleBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      if (isMenuOpen()) {
+        closeMenu();
       } else {
-        menu.classList.toggle('hidden');
-        isOpen = !menu.classList.contains('hidden');
+        openMenu();
       }
-
-      if (icon) {
-        icon.textContent = isOpen ? 'close' : 'menu';
-      }
-
-      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    /* ----- Auto-close when any link is tapped ----- */
+    // Auto-close when any link is tapped
     menu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         closeMenu();
       });
     });
 
-    /* ----- Close when clicking outside ----- */
+    // Close when clicking outside
     document.addEventListener('click', function (event) {
       if (!isMenuOpen()) return;
-
       var clickedInsideMenu = menu.contains(event.target);
       var clickedToggle = toggleBtn.contains(event.target);
-
       if (!clickedInsideMenu && !clickedToggle) {
         closeMenu();
       }
     });
 
-    /* ----- Close on Escape key ----- */
+    // Close on Escape key
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && isMenuOpen()) {
         closeMenu();
       }
     });
 
-    /* ----- Close if resized to desktop ----- */
+    // Close if resized to desktop
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
@@ -262,24 +253,10 @@
         }
       }, 150);
     });
-
-    /* ----- Helpers ----- */
-    function isMenuOpen() {
-      return menu.classList.contains('open') || !menu.classList.contains('hidden');
-    }
-
-    function closeMenu() {
-      menu.classList.remove('open');
-      menu.classList.add('hidden');
-      if (icon) icon.textContent = 'menu';
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    }
   }
 
   /* --------------------------------------------------------------------------
      6. AUTOMATIC ACTIVE NAV LINK HIGHLIGHTING
-     Reads current URL and adds `.active` to matching nav links
-     across both desktop nav and mobile drawer.
      -------------------------------------------------------------------------- */
   function initActiveNavLinks() {
     var currentPage = window.location.pathname.split('/').pop().toLowerCase();
@@ -305,7 +282,6 @@
 
   /* --------------------------------------------------------------------------
      7. DYNAMIC GUEST REVIEW SUBMISSION
-     Appends testimonials to the reviews stream without refreshing.
      -------------------------------------------------------------------------- */
   function initReviewSubmission() {
     var reviewForm = document.getElementById('review-form');
@@ -368,7 +344,6 @@
         reviewsContainer.prepend(reviewCard);
       }
 
-      // Reset form + stars
       reviewForm.reset();
       if (starsContainer) {
         starsContainer.setAttribute('data-rating', '5');
@@ -386,7 +361,6 @@
 
   /* --------------------------------------------------------------------------
      8. DIRECT CONCIERGE DESK / ANONYMOUS CHAT
-     Sends guest messages to a chat thread with an auto-reply.
      -------------------------------------------------------------------------- */
   function initConciergeDesk() {
     var deskForm = document.getElementById('desk-form') ||
@@ -422,7 +396,6 @@
       messageInput.value = '';
       chatThread.scrollTop = chatThread.scrollHeight;
 
-      // Automated reply from concierge
       setTimeout(function () {
         var hostReply = document.createElement('div');
         hostReply.className = 'flex justify-start mb-3';
@@ -441,7 +414,6 @@
 
   /* --------------------------------------------------------------------------
      9. HEADER SHADOW ON SCROLL
-     Adds a subtle shadow once the page is scrolled past the top.
      -------------------------------------------------------------------------- */
   function initHeaderScrollShadow() {
     var header = document.querySelector('.site-header');
@@ -476,9 +448,6 @@
      HELPERS
      -------------------------------------------------------------------------- */
 
-  /**
-   * Escape HTML special characters to prevent injection.
-   */
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, '&amp;')
@@ -488,9 +457,6 @@
       .replace(/'/g, '&#039;');
   }
 
-  /**
-   * Repeat a character N times (compact star rendering).
-   */
   function repeatChar(char, count) {
     var out = '';
     for (var i = 0; i < count; i++) out += char;

@@ -171,17 +171,24 @@
 
         /* Animate gallery items */
         galleryItems.forEach(function (item) {
-          var itemCategory = (item.classList.contains('living') ? 'living'
-                            : item.classList.contains('bedroom') ? 'bedroom'
-                            : item.classList.contains('kitchen') ? 'kitchen'
-                            : item.classList.contains('bathroom') ? 'bathroom'
-                            : item.classList.contains('surroundings') ? 'surroundings'
-                            : 'all').toLowerCase();
+          var itemCategory = (item.getAttribute('data-category') || '').toLowerCase();
+
+          /* Fallback: read from class names if data-category is missing */
+          if (!itemCategory) {
+            if (item.classList.contains('living')) itemCategory = 'living';
+            else if (item.classList.contains('bedroom')) itemCategory = 'bedroom';
+            else if (item.classList.contains('kitchen')) itemCategory = 'kitchen';
+            else if (item.classList.contains('bathroom')) itemCategory = 'bathroom';
+            else if (item.classList.contains('surroundings')) itemCategory = 'surroundings';
+            else itemCategory = 'all';
+          }
 
           var shouldShow = filterValue === 'all' || itemCategory === filterValue;
 
           if (shouldShow) {
             item.style.display = 'block';
+            /* Force reflow so the transition plays */
+            void item.offsetWidth;
             requestAnimationFrame(function () {
               item.style.opacity = '1';
               item.style.transform = 'scale(1)';
@@ -213,13 +220,16 @@
     var images = [];
     galleryItems.forEach(function (item, index) {
       var img = item.querySelector('img');
+      var titleEl = item.querySelector('.gallery-title, h3, h4');
+      var descEl  = item.querySelector('.gallery-desc, p');
+
       var title = item.getAttribute('data-title')
-                || (item.querySelector('.gallery-title, h3, h4') && item.querySelector('.gallery-title, h3, h4').textContent)
+                || (titleEl && titleEl.textContent)
                 || (img && img.alt)
                 || ('Sanctuary View ' + (index + 1));
 
       var desc = item.getAttribute('data-desc')
-               || (item.querySelector('.gallery-desc, p') && item.querySelector('.gallery-desc, p').textContent)
+               || (descEl && descEl.textContent)
                || 'Cedar Haven Sanctuary • Kasarani, Nairobi';
 
       var cat = item.getAttribute('data-category') || '';
@@ -272,17 +282,18 @@
       document.body.appendChild(lightbox);
     }
 
-    var lightboxImg = document.getElementById('lightboxImg');
-    var lightboxTitle = document.getElementById('lightboxTitle');
-    var lightboxDesc = document.getElementById('lightboxDesc');
+    var lightboxImg     = document.getElementById('lightboxImg');
+    var lightboxTitle   = document.getElementById('lightboxTitle');
+    var lightboxDesc    = document.getElementById('lightboxDesc');
     var lightboxCounter = document.getElementById('lightboxCounter');
-    var closeBtn = document.getElementById('lightboxClose');
-    var prevBtn = document.getElementById('lightboxPrev');
-    var nextBtn = document.getElementById('lightboxNext');
+    var closeBtn        = document.getElementById('lightboxClose');
+    var prevBtn         = document.getElementById('lightboxPrev');
+    var nextBtn         = document.getElementById('lightboxNext');
 
     var currentIndex = 0;
 
     function updateLightboxContent(index) {
+      if (!images.length) return;
       if (index < 0) index = images.length - 1;
       if (index >= images.length) index = 0;
       currentIndex = index;

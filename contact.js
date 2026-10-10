@@ -150,6 +150,9 @@
     var wrapper = document.getElementById('aliasWrapper');
     if (!toggle || !wrapper) return;
 
+    /* Set initial state to match the checkbox */
+    wrapper.style.display = toggle.checked ? 'none' : 'flex';
+
     toggle.addEventListener('change', function () {
       wrapper.style.display = toggle.checked ? 'none' : 'flex';
     });
@@ -219,6 +222,7 @@
 
       appendMessage(message, 'user');
       chatInput.value = '';
+      chatInput.focus();
 
       setTimeout(function () {
         var responses = [
@@ -271,6 +275,7 @@
 
       if (!message) {
         showNotification('Please enter your message or inquiry before submitting.');
+        if (messageInput) messageInput.focus();
         return;
       }
 

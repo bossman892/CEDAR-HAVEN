@@ -58,72 +58,83 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="responsive.css">
+
+  <style>
+    /* ---------- Sharpened Fixed Background ---------- */
+    #reviews-bg {
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvH8DE3_sCkRA9cMSq7LD-qYUSWjcALIMT8G8_If0-C8nqeJyxGT7Cztwo9ic_u4Ayq_cLw1g1DPvYdG-2QxdMTLKgo3oLWxhF6DVfCIJCmVxhxVpt_Dri9mai9Sb19buBhIeJKw_gIcEe-FQ41e1QNfbtZZbKzdjurTO6VHBNH6MzUcls4T78JFxu70n7Ixub1au3klnItApn0snI9tmnIV7plqZC4H-tkNyWOrRbWWGE4V7hyfxy77lWE4Tavt_SplU=s1920');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      opacity: 1;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      filter: contrast(1.15) saturate(1.15) brightness(1.02);
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    /* Light overlay so image shows clearly but text stays readable */
+    #reviews-bg-overlay {
+      background: linear-gradient(180deg, rgba(251, 249, 248, 0.25) 0%, rgba(245, 243, 240, 0.35) 40%, rgba(251, 249, 248, 0.45) 100%);
+    }
+  </style>
 </head>
 
 <body class="bg-surface text-[#1a3c34] antialiased min-h-screen flex flex-col justify-between">
 
-  <!-- Fixed Background -->
+  <!-- ==================== FIXED BACKGROUND (SHARPENED) ==================== -->
   <div class="fixed inset-0 w-full h-full pointer-events-none z-0">
-    <div class="w-full h-full"
-         style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBF5qjVFE74tfVDFw1ev62tDgzECrbBgoNGhw7oWJihQTfcX4VaJgb0ngnTC41l548BlXs3xpDWc2SQQzWP0FeaNtcw0fUS_2s05W7lQPxtJk75Y15fvuC4GrVwzZkaIKljwiSLhu-WXUfNTxwUyuZJDqUsh0yEBxNsbvUyHaiyAxRXt51x1paoFaj9q4CKXWuuUnCtDWJ7XEhKDi0cBSpNyCqRkZE1GlwcX5-HhJMyPSQCjx382DUGwnuUFc5AxMFJjXw');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                filter: contrast(1.03) saturate(1.05);"></div>
-    <div class="absolute inset-0 bg-[#fbf9f8]/75 backdrop-blur-[2px]"></div>
+    <div id="reviews-bg" class="w-full h-full"></div>
+    <div id="reviews-bg-overlay" class="absolute inset-0"></div>
   </div>
 
   <!-- Header / Navigation Bar -->
-  <header class="site-header">
-
-    <div class="site-header-inner">
-
+  <header class="site-header sticky top-0 z-50 bg-gradient-to-r from-[#f5ebd7]/95 via-[#ecd7ab]/95 to-[#dfbe7e]/95 backdrop-blur-md border-b border-[#c5a059]/40 shadow-sm">
+    <div class="site-header-inner max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Brand Logo -->
-      <a href="index.html" class="brand">
-        <div class="brand-mark">
-          <img src="IMG-20260807-WA0022.jpg"
-               alt="Cedar Haven Monogram">
+      <a href="index.html" class="brand flex items-center gap-3">
+        <div class="brand-mark w-11 h-11 rounded-full overflow-hidden border border-[#c5a059]/40 bg-[#1a3c34] flex items-center justify-center shadow-sm">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1V9PID3jIxhjgkwd63QlJX4I2OYkapr5B0oT6zpfTt4ogMTh_rfgBGmztknGlBlZOpL7q7EjaS14fPZ-ZHNmp4CjJLE6A5AH8xHQxg7Fzvgd3JwLA2Kf2GKarJTXtT6EQleQ0u8JnVaR570TnDPqFSCMtRKEL9voUDzMA24bQNngZjZDs9Yx8CaaF5qOWhS5oGPqt3TNBOX2KEKEs_weUu7NZy4jo-gGHcHd8ZIndUe0DoXAxB4yeUoT7P60qrj2LI4EiecITX-f28" alt="Cedar Haven Monogram" class="w-full h-full object-cover">
         </div>
-        <span class="brand-name">Cedar Haven</span>
+        <span class="brand-name font-serif text-2xl tracking-[0.14em] uppercase text-[#1a3c34]">Cedar Haven</span>
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="desktop-nav">
+      <nav class="desktop-nav hidden lg:flex items-center gap-8">
         <a href="index.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">The Sanctuary</a>
         <a href="gallery.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">Gallery</a>
         <a href="about.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">About</a>
-        <a href="reviews.html" class="active">Reviews</a>
-        <a href="house-rules.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">House Rules</a>
+        <a href="reviews.html" class="text-xs uppercase tracking-[0.18em] font-semibold text-[#1a3c34] border-b-2 border-[#c5a059] py-1">Reviews</a>
+        <a href="house-guidelines.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">House Guidelines</a>
         <a href="contact.html" class="text-xs uppercase tracking-[0.18em] text-[#1a3c34]/70 hover:text-[#1a3c34] transition-colors py-1">Contact</a>
       </nav>
 
       <!-- Action Button / Mobile Menu Toggle -->
-      <div class="header-actions">
-        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay"
-           target="_blank" rel="noopener noreferrer"
-           class="header-cta">
+      <div class="header-actions flex items-center gap-3">
+        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay" target="_blank" rel="noopener noreferrer" class="header-cta inline-flex items-center gap-2 px-4 py-2 border border-[#1a3c34]/20 rounded-full text-xs font-semibold tracking-wider uppercase text-[#1a3c34] hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all shadow-sm">
           <i class="fa-brands fa-whatsapp text-sm text-[#25D366]"></i>
           <span>Inquire</span>
         </a>
-        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+        <button id="mobile-menu-btn" class="mobile-menu-btn lg:hidden w-10 h-10 rounded-full bg-white/60 border border-[#c5a059]/40 flex items-center justify-center text-[#1a3c34]" aria-label="Toggle Menu">
           <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Drawer Navigation (smooth animation) -->
-    <div id="mobile-menu" class="mobile-menu">
-      <a href="index.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2.5 border-b border-[#1a3c34]/5">The Sanctuary</a>
-      <a href="gallery.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2.5 border-b border-[#1a3c34]/5">Gallery</a>
-      <a href="about.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2.5 border-b border-[#1a3c34]/5">About</a>
-      <a href="reviews.html" class="active">Reviews</a>
-      <a href="house-rules.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2.5 border-b border-[#1a3c34]/5">House Rules</a>
-      <a href="contact.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2.5">Contact</a>
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="mobile-menu hidden px-6 py-4 bg-[#fbf9f8] border-b border-[#1a3c34]/10 space-y-2">
+      <a href="index.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2 border-b border-[#1a3c34]/5">The Sanctuary</a>
+      <a href="gallery.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2 border-b border-[#1a3c34]/5">Gallery</a>
+      <a href="about.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2 border-b border-[#1a3c34]/5">About</a>
+      <a href="reviews.html" class="block text-sm uppercase tracking-widest font-bold text-[#c5a059] py-2 border-b border-[#1a3c34]/5">Reviews</a>
+      <a href="house-guidelines.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2 border-b border-[#1a3c34]/5">House Guidelines</a>
+      <a href="contact.html" class="block text-sm uppercase tracking-widest text-[#1a3c34]/80 py-2">Contact</a>
 
-      <div class="pt-4 mt-3 border-t border-[#1a3c34]/10">
-        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay"
-           target="_blank" rel="noopener noreferrer"
-           class="mobile-cta">
+      <div class="pt-3 border-t border-[#1a3c34]/10">
+        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay" target="_blank" rel="noopener noreferrer" class="mobile-cta flex items-center justify-center gap-2 w-full py-3 bg-[#1a3c34] text-white rounded-full text-xs font-semibold tracking-wider uppercase">
           <i class="fa-brands fa-whatsapp text-[#25D366]"></i> Inquire via WhatsApp
         </a>
       </div>
@@ -133,27 +144,22 @@
   <main class="flex-grow relative z-10">
 
     <!-- Hero Section -->
-    <section class="relative w-full py-20 sm:py-24 flex items-center justify-center">
+    <section class="relative w-full py-16 sm:py-20 flex items-center justify-center">
       <div class="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a3c34]/90 border border-[#c5a059]/80 text-[#dfbe7e] text-xs uppercase tracking-[0.25em] mb-4 shadow-md">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#c5a059]"></span>Guest Impressions
-        </span>
-        <h1 class="font-serif-title text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase font-normal text-[#1a3c34]"
-            style="text-shadow: 0 1px 2px rgba(255,255,255,0.8);">
-          Guest Reviews
-        </h1>
-        <p class="font-serif-title text-lg sm:text-xl text-[#775a19] tracking-[0.2em] uppercase mt-3 italic">
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight uppercase font-normal text-[#1a3c34]">Guest Impressions</h1>
+
+        <p class="font-serif text-lg sm:text-xl text-[#775a19] tracking-[0.2em] uppercase mt-3 italic">
           Real experiences at Cedar Haven
         </p>
       </div>
     </section>
 
     <!-- Narrative Intro -->
-    <section class="w-full py-12 sm:py-16 relative">
+    <section class="w-full py-8 sm:py-12 relative">
       <div class="max-w-4xl mx-auto px-6 text-center">
         <div class="bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-[#c5a059]/30 shadow-sm">
           <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059] to-transparent mx-auto mb-6"></div>
-          <p class="font-serif-title text-xl sm:text-2xl text-[#1a3c34] leading-relaxed font-normal">
+          <p class="font-serif text-xl sm:text-2xl text-[#1a3c34] leading-relaxed font-normal">
             Every guest journey adds a meaningful chapter to <span class="text-[#775a19] font-medium">Cedar Haven</span>. We invite you to read stories from our travelers and share your own sanctuary experience below.
           </p>
           <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059] to-transparent mx-auto mt-6"></div>
@@ -162,7 +168,7 @@
     </section>
 
     <!-- Reviews Display & Submission Section -->
-    <section class="w-full py-12 pb-20 border-t border-[#1a3c34]/5 relative">
+    <section class="w-full py-10 pb-20 border-t border-[#1a3c34]/5 relative">
       <div class="max-w-6xl mx-auto px-6">
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -172,7 +178,7 @@
             <div class="flex items-center justify-between pb-2 border-b border-[#1a3c34]/10">
               <div>
                 <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c5a059]">Verified Memories</span>
-                <h2 class="font-serif-title text-2xl sm:text-3xl text-[#1a3c34] mt-1">
+                <h2 class="font-serif text-2xl sm:text-3xl text-[#1a3c34] mt-1">
                   <span>Guest </span><span class="text-[#c5a059] italic">Testimonials</span>
                 </h2>
               </div>
@@ -188,7 +194,7 @@
                 <div class="w-12 h-12 mx-auto rounded-full bg-[#c5a059]/15 flex items-center justify-center text-[#c5a059] mb-3">
                   <span class="material-symbols-outlined text-2xl">rate_review</span>
                 </div>
-                <h3 class="font-serif-title text-xl text-[#1a3c34] font-medium mb-1">Be the First to Share</h3>
+                <h3 class="font-serif text-xl text-[#1a3c34] font-medium mb-1">Be the First to Share</h3>
                 <p class="text-xs sm:text-sm text-[#1a3c34]/70 max-w-md mx-auto">
                   No reviews have been posted yet. Have you stayed at Cedar Haven? Complete the quick form to publish your experience right here on this page.
                 </p>
@@ -200,8 +206,12 @@
           <div class="lg:col-span-5 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#c5a059]/40 shadow-lg relative">
             <div class="mb-6">
               <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c5a059]">Share Your Story</span>
-              <h3 class="font-serif-title text-2xl text-[#1a3c34] mt-1">Leave a Review</h3>
-              <p class="text-xs text-[#1a3c34]/70 mt-1">Your feedback will instantly appear on the live reviews feed.</p>
+              <h3 class="font-serif text-2xl text-[#1a3c34] mt-1">Leave a Review</h3>
+              <p class="text-xs text-[#1a3c34]/70 mt-1">Your feedback publishes in real time and syncs across all visiting guests.</p>
+              <div class="mt-3.5 flex items-start gap-2 p-2.5 rounded-xl bg-[#c5a059]/10 border border-[#c5a059]/30 text-[11px] text-[#1a3c34]/80 leading-normal">
+                <span class="material-symbols-outlined text-sm text-[#c5a059] shrink-0 mt-0.5">cloud_done</span>
+                <span><strong class="font-semibold text-[#1a3c34]">Live Cloud Sync:</strong> Submissions persist instantly across visitor devices via cloud database with automatic offline storage fallback. Real guest reviews stay synchronized across browsers.</span>
+              </div>
             </div>
 
             <form id="review-form" class="space-y-4">
@@ -210,8 +220,7 @@
                 <label for="reviewer-name" class="block text-xs uppercase tracking-wider text-[#1a3c34]/80 font-semibold mb-1.5">
                   Your Name *
                 </label>
-                <input type="text" id="reviewer-name" required placeholder="e.g., Sarah Wambui"
-                       class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all">
+                <input type="text" id="reviewer-name" required placeholder="e.g., Sarah Wambui" class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all">
               </div>
 
               <!-- Location -->
@@ -219,8 +228,7 @@
                 <label for="reviewer-location" class="block text-xs uppercase tracking-wider text-[#1a3c34]/80 font-semibold mb-1.5">
                   Home City / Trip Purpose
                 </label>
-                <input type="text" id="reviewer-location" placeholder="e.g., Nairobi • Weekend Getaway"
-                       class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all">
+                <input type="text" id="reviewer-location" placeholder="e.g., Nairobi • Weekend Getaway" class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all">
               </div>
 
               <!-- Star Rating -->
@@ -244,13 +252,11 @@
                 <label for="reviewer-message" class="block text-xs uppercase tracking-wider text-[#1a3c34]/80 font-semibold mb-1.5">
                   Your Experience *
                 </label>
-                <textarea id="reviewer-message" rows="4" required placeholder="Tell future guests about your stay, tranquility, cleanliness, and the Kasarani atmosphere..."
-                          class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all resize-none"></textarea>
+                <textarea id="reviewer-message" rows="4" required placeholder="Tell future guests about your stay, tranquility, cleanliness, and the Kasarani atmosphere..." class="w-full px-4 py-2.5 rounded-xl border border-[#1a3c34]/15 bg-white/80 text-sm text-[#1a3c34] focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all resize-none"></textarea>
               </div>
 
               <!-- Submit -->
-              <button type="submit"
-                      class="w-full py-3.5 bg-[#1a3c34] text-white rounded-full text-xs font-semibold uppercase tracking-[0.16em] hover:bg-[#122c26] transition-all duration-300 shadow-md flex items-center justify-center gap-2">
+              <button type="submit" class="w-full py-3.5 bg-[#1a3c34] text-white rounded-full text-xs font-semibold uppercase tracking-[0.16em] hover:bg-[#122c26] transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer">
                 <span class="material-symbols-outlined text-base">send</span>
                 <span>Submit Review</span>
               </button>
@@ -269,18 +275,17 @@
     <section class="w-full py-16 sm:py-20 bg-[#1a3c34] text-center text-white relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a059_1px,transparent_1px)] [background-size:16px_16px]"></div>
       <div class="relative z-10 max-w-4xl mx-auto px-6">
-        <span class="text-xs uppercase tracking-[0.3em] text-[#dfbe7e] font-semibold mb-3 block italic">The Cedar Haven Creed</span>
-        <h2 class="font-serif-title text-3xl sm:text-4xl md:text-5xl tracking-[0.12em] uppercase font-normal italic bg-gradient-to-r from-[#dfbe7e] via-[#fff0c8] to-[#c5a059] bg-clip-text text-transparent">
-          Where Comfort Feels Like Home
+        <div class="w-12 h-12 rounded-full overflow-hidden border border-[#c5a059]/40 bg-[#1a3c34] mx-auto mb-4 flex items-center justify-center shadow-sm">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1V9PID3jIxhjgkwd63QlJX4I2OYkapr5B0oT6zpfTt4ogMTh_rfgBGmztknGlBlZOpL7q7EjaS14fPZ-ZHNmp4CjJLE6A5AH8xHQxg7Fzvgd3JwLA2Kf2GKarJTXtT6EQleQ0u8JnVaR570TnDPqFSCMtRKEL9voUDzMA24bQNngZjZDs9Yx8CaaF5qOWhS5oGPqt3TNBOX2KEKEs_weUu7NZy4jo-gGHcHd8ZIndUe0DoXAxB4yeUoT7P60qrj2LI4EiecITX-f28" alt="Cedar Haven Monogram" class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl tracking-[0.08em] font-normal italic text-[#fbf9f8]">
+          Where comfort feels like home
         </h2>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20reserve%20a%20stay"
-             target="_blank" rel="noopener noreferrer"
-             class="px-8 py-3.5 rounded-full bg-[#c5a059] text-[#142e28] font-bold text-xs uppercase tracking-widest hover:bg-[#dfbe7e] transition-all duration-300 shadow-md flex items-center gap-2">
+          <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20reserve%20a%20stay" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 rounded-full bg-[#c5a059] text-[#142e28] font-bold text-xs uppercase tracking-widest hover:bg-[#dfbe7e] transition-all duration-300 shadow-md flex items-center gap-2">
             <i class="fa-brands fa-whatsapp text-base"></i> Reserve via WhatsApp
           </a>
-          <a href="gallery.html"
-             class="px-8 py-3.5 rounded-full border border-white/30 text-white font-semibold text-xs uppercase tracking-widest hover:bg-white hover:text-[#1a3c34] transition-all duration-300">
+          <a href="gallery.html" class="px-8 py-3.5 rounded-full border border-white/30 text-white font-semibold text-xs uppercase tracking-widest hover:bg-white hover:text-[#1a3c34] transition-all duration-300">
             View Spaces Gallery
           </a>
         </div>
@@ -289,18 +294,16 @@
   </main>
 
   <!-- Global Footer -->
-  <footer class="w-full pt-12 pb-10 border-t border-[#c5a059]/40 text-[#1a3c34] relative z-10"
-          style="background: linear-gradient(135deg, #eedcb3 0%, #dfbe7e 40%, #c5a059 85%, #b38b42 100%);">
+  <footer class="w-full pt-12 pb-10 border-t border-[#c5a059]/40 text-[#1a3c34] relative z-10" style="background: linear-gradient(135deg, #eedcb3 0%, #dfbe7e 40%, #c5a059 85%, #b38b42 100%);">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
 
       <!-- Brand & Copyright -->
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full overflow-hidden border border-[#1a3c34]/30 bg-[#1a3c34] flex items-center justify-center shadow-sm">
-          <img src="IMG-20260807-WA0022.jpg"
-               alt="Cedar Haven Logo" class="w-full h-full object-cover">
+        <div class="w-9 h-9 rounded-full overflow-hidden border border-[#1a3c34]/30 bg-[#1a3c34] flex items-center justify-center shadow-sm">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1V9PID3jIxhjgkwd63QlJX4I2OYkapr5B0oT6zpfTt4ogMTh_rfgBGmztknGlBlZOpL7q7EjaS14fPZ-ZHNmp4CjJLE6A5AH8xHQxg7Fzvgd3JwLA2Kf2GKarJTXtT6EQleQ0u8JnVaR570TnDPqFSCMtRKEL9voUDzMA24bQNngZjZDs9Yx8CaaF5qOWhS5oGPqt3TNBOX2KEKEs_weUu7NZy4jo-gGHcHd8ZIndUe0DoXAxB4yeUoT7P60qrj2LI4EiecITX-f28" alt="Cedar Haven Logo" class="w-full h-full object-cover">
         </div>
         <div>
-          <span class="font-serif-title text-lg tracking-widest uppercase text-[#1a3c34] font-semibold block">Cedar Haven</span>
+          <span class="font-serif text-lg tracking-widest uppercase text-[#1a3c34] font-semibold block">Cedar Haven</span>
           <span class="text-xs text-[#1a3c34]/70">© 2026. All rights reserved.</span>
         </div>
       </div>
@@ -316,46 +319,48 @@
           <span class="material-symbols-outlined text-sm text-[#1a3c34]">call</span>
           +254 142 202 815
         </a>
+        <span class="text-[#1a3c34]/40">•</span>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=cedar.haven.ke@gmail.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#01261f] transition-colors flex items-center gap-1.5 font-semibold">
+          <span class="material-symbols-outlined text-sm text-[#1a3c34]">mail</span>
+          cedar.haven.ke@gmail.com
+        </a>
       </div>
 
       <!-- Social Media Icons -->
       <div class="flex items-center gap-4 text-[#1a3c34]">
-        <a href="https://www.tiktok.com/@cedar.haven.kasar?_r=1&amp;_t=ZS-9A3sqwBTc3u" target="_blank" rel="noopener noreferrer"
-           class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="TikTok">
+        <a href="https://www.tiktok.com/@cedar.haven.kasar?_r=1&amp;_t=ZS-9A3sqwBTc3u" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="TikTok">
           <i class="fa-brands fa-tiktok text-sm"></i>
         </a>
-        <a href="https://www.instagram.com/cedar.haven_" target="_blank" rel="noopener noreferrer"
-           class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="Instagram">
+        <a href="https://www.instagram.com/cedar.haven_" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="Instagram">
           <i class="fa-brands fa-instagram text-sm"></i>
         </a>
-        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay" target="_blank" rel="noopener noreferrer"
-           class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="WhatsApp">
+        <a href="https://wa.me/254142202815?text=Hello%20Cedar%20Haven%2C%20I%20would%20like%20to%20inquire%20about%20a%20stay" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-[#1a3c34]/10 border border-[#1a3c34]/20 flex items-center justify-center hover:bg-[#1a3c34] hover:text-[#fbf9f8] transition-all duration-300 shadow-sm" aria-label="WhatsApp">
           <i class="fa-brands fa-whatsapp text-sm"></i>
         </a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Interactive Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* ---------- 1. MOBILE MENU (smooth animation) ---------- */
+      /* ---------- 1. MOBILE MENU ---------- */
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       const mobileIcon = document.getElementById('mobile-menu-icon');
 
       if (mobileBtn && mobileMenu) {
         mobileBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('open');
+          mobileMenu.classList.toggle('hidden');
           if (mobileIcon) {
-            mobileIcon.textContent = mobileMenu.classList.contains('open') ? 'close' : 'menu';
+            mobileIcon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
           }
         });
 
         mobileMenu.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
+            mobileMenu.classList.add('hidden');
             if (mobileIcon) mobileIcon.textContent = 'menu';
           });
         });
@@ -425,7 +430,7 @@
         card.innerHTML = `
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-[#1a3c34]/10 text-[#1a3c34] font-serif-title font-bold flex items-center justify-center text-sm border border-[#c5a059]/30">
+              <div class="w-10 h-10 rounded-full bg-[#1a3c34]/10 text-[#1a3c34] font-serif font-bold flex items-center justify-center text-sm border border-[#c5a059]/30">
                 ${escapeHtml(data.name.charAt(0).toUpperCase())}
               </div>
               <div>
@@ -459,7 +464,7 @@
         }
       }
 
-      // Restore reviews from localStorage (oldest-first so newest ends up on top)
+      // Restore reviews from localStorage
       try {
         const storedReviews = JSON.parse(localStorage.getItem('cedar_haven_reviews') || '[]');
         if (storedReviews && storedReviews.length > 0) {
@@ -489,14 +494,12 @@
 
           renderReviewCard(newReview, true);
 
-          // Persist to localStorage
           try {
             const list = JSON.parse(localStorage.getItem('cedar_haven_reviews') || '[]');
             list.unshift(newReview);
             localStorage.setItem('cedar_haven_reviews', JSON.stringify(list));
           } catch (err) { /* ignore */ }
 
-          // Reset form
           reviewForm.reset();
           updateStars(5);
           if (submitSuccess) {
@@ -507,11 +510,6 @@
       }
     });
   </script>
-  <!-- Shared scripts -->
-<script src="js/main.js"></script>
-
-<!-- Reviews-only script -->
-<script src="js/reviews.js"></script>
 
 </body>
 </html>

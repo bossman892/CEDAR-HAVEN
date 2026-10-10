@@ -111,12 +111,14 @@
       if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
     });
 
+    // Auto-close when any nav link inside the sidebar is tapped
     sidebar.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         setTimeout(closeSidebar, 150);
       });
     });
 
+    // Close if resized to desktop
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
@@ -232,11 +234,15 @@
       }
     }
 
-    /* Initial render */
+    // Initial render
     highlightStars(selectedRating);
 
     stars.forEach(function (star, index) {
-      var starValue = parseInt(star.getAttribute('data-star') || star.getAttribute('data-rating'), 10) || (index + 1);
+      var starValue = parseInt(
+        star.getAttribute('data-star') ||
+        star.getAttribute('data-rating'),
+        10
+      ) || (index + 1);
 
       star.addEventListener('mouseenter', function () {
         highlightStars(starValue);
@@ -325,7 +331,7 @@
 
     if (!container) return;
 
-    /* Build stars */
+    // Build stars
     var starsHtml = '';
     for (var i = 1; i <= 5; i++) {
       if (i <= review.rating) {
@@ -444,7 +450,7 @@
           saveReviewToStorage(newReview);
           appendReviewCard(newReview, true);
 
-          /* Reset form */
+          // Reset form
           reviewForm.reset();
           selectedRating = 5;
 

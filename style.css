@@ -70,10 +70,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Hide scrollbars universally */
-::-webkit-scrollbar { display: none; }
-* { scrollbar-width: none; -ms-overflow-style: none; }
-
 body {
   position: relative;
   font-family: var(--font-body);
@@ -108,6 +104,12 @@ a {
 button, input, textarea, select {
   font-family: inherit;
   color: inherit;
+}
+
+/* Lock body scroll while mobile sidebar or lightbox is open */
+body.sidebar-open,
+body.lightbox-open {
+  overflow: hidden;
 }
 
 /* --------------------------------------------------------------------------
@@ -259,6 +261,7 @@ button, input, textarea, select {
   color: var(--color-primary);
   box-shadow: 0 1px 3px rgba(26, 60, 52, 0.08);
   transition: var(--transition-fast);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .header-cta:hover {
@@ -269,6 +272,7 @@ button, input, textarea, select {
 .header-cta i {
   color: #25d366;
   font-size: 0.875rem;
+  transition: color 0.2s ease;
 }
 
 .header-cta:hover i {
@@ -444,10 +448,6 @@ button, input, textarea, select {
 .sidebar-link .material-symbols-outlined {
   font-size: 1.125rem;
   color: var(--color-gold);
-}
-
-body.sidebar-open {
-  overflow: hidden;
 }
 
 /* Staggered link entrance animation */
@@ -872,9 +872,25 @@ footer.site-footer {
   .brand-mark { width: 38px; height: 38px; }
   .section-padding { padding: 4rem 0; }
   .container { padding: 0 1.25rem; }
+
+  #mobile-sidebar { width: 100vw; max-width: 100vw; }
 }
 
 /* Desktop — hide mobile dropdown */
 @media (min-width: 1024px) {
   .mobile-menu { display: none !important; }
+  #mobile-sidebar,
+  #mobile-overlay { display: none !important; }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

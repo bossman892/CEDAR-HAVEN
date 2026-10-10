@@ -34,18 +34,15 @@ button, a {
   touch-action: manipulation;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
+/* Safe area inset for notched devices (iPhone X+) */
 @supports (padding: max(0px)) {
   .site-header {
     padding-top: max(0px, env(safe-area-inset-top));
+  }
+
+  #mobile-sidebar {
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
   }
 }
 
@@ -97,7 +94,7 @@ button, a {
     letter-spacing: 0.12em;
   }
 
-  /* Sidebar CTA padding */
+  /* Header CTA padding */
   .header-cta {
     padding: 0.5rem 1rem;
     font-size: 0.6875rem;
@@ -414,6 +411,7 @@ button, a {
 
   #mobile-sidebar {
     width: 92vw;
+    max-width: 100%;
   }
 
   .sidebar-link {
@@ -473,38 +471,7 @@ button, a {
 }
 
 /* --------------------------------------------------------------------------
-   9. DARK MODE SAFETY (if user has system dark mode)
-   We keep the sanctuary palette intact — no dark mode override.
-   -------------------------------------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  /* Intentionally no overrides — Cedar Haven stays warm and bright */
-}
-
-/* --------------------------------------------------------------------------
-   10. REDUCED MOTION (accessibility)
-   -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  #mobile-sidebar {
-    transition: none !important;
-  }
-
-  #mobile-sidebar.open .sidebar-link {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   11. HOVER SAFETY (avoid sticky hover on touch devices)
+   9. HOVER SAFETY (avoid sticky hover on touch devices)
    -------------------------------------------------------------------------- */
 @media (hover: none) {
   .sidebar-link:hover,
@@ -527,5 +494,35 @@ button, a {
 
   .mobile-menu a:hover {
     padding-left: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. PRINT STYLES (bonus — clean print of house rules & contact)
+   -------------------------------------------------------------------------- */
+@media print {
+  .site-header,
+  #mobile-sidebar,
+  #mobile-overlay,
+  .mobile-menu,
+  .mobile-menu-btn,
+  footer.site-footer,
+  #lightbox {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: underline;
   }
 }
